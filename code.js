@@ -1,11 +1,3 @@
-# How to Import MailChimp Subscribers to Google Sheets
-The Gmail Mail Merge addon can now import the email addresses of subscribers from your MailChimp mailing lists into Google Sheets. If you wish to send emails to your subscribers directly from Gmail, instead of using MailChimp mail servers, this is the way to go.
-
-As a developer, you can use Google Apps Script to import subscriber lists, HTML campaigns, performance reports and any other data from MailChimp to Google Sheets for analysis. You can use the MailChimp OAuth2 library but in this example, we’ll use the developer key directly to connect to MailChimp.
-
-# Google Apps Script - Get MailChimp Audiences
-
-```javascript
 const MAILCHIMP_API_KEY = '<<API_KEY_HERE>>';
 
 // MailChimp API key includes the data center id
@@ -58,6 +50,3 @@ const getMailChimpLists = () => {
   const { lists = [] } = makeHttpRequest('lists', params);
   return lists.map(({ id, name }) => ({ id, name, members: getMailChimpListMembers(id) }));
 };
-```
-The GetMailChimpLists method will bring all the lists and associated email addresses in a JSON object that you can easily write to Google Sheets using the SpreadsheetApp service.
-
